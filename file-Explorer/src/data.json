@@ -1,1 +1,34 @@
-
+[
+  {
+    "name": "public",
+    "isFolder": true
+  },
+  {
+    "name": "src",
+    "isFolder": true,
+    "children": [
+      {
+        "name": "components",
+        "isFolder": true,
+        "children": [
+          {
+            "name": "Nested.jsx",
+            "isFolder": false
+          }
+        ]
+      },
+      {
+        "name": "App.jsx",
+        "isFolder": false
+      }
+    ]
+  },
+  {
+    "name": "package.json",
+    "isFolder": false
+  },
+  {
+    "name": "package.lock.json",
+    "isFolder": false
+  }
+]
