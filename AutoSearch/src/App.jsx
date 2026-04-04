@@ -47,16 +47,20 @@ const App = () => {
 
       {show && (
         <div className="w-full max-w-md bg-white rounded-xl shadow-md p-4 space-y-3 max-h-[400px] overflow-y-auto">
-          {recipes.map((recipes, index) => (
-            <div
-              key={index}
-              className="p-3 bg-gray-50 rounded-lg hover:bg-purple-50 cursor-pointer transition"
-            >
-              <p className="text-gray-700 font-medium">{recipes.name}</p>
+          {recipes.map((recipes) => (
+            <div key={recipes.id}>
+              <div className="p-3 bg-gray-50 rounded-lg hover:bg-purple-50 cursor-pointer transition">
+                <p className="text-gray-700 font-medium">{recipes.name}</p>
+              </div>
             </div>
           ))}
         </div>
       )}
+      {recipes.map((Recipe) => (
+        <div>
+          <h1>{Recipe.name}</h1>
+        </div>
+      ))}
     </div>
   );
 };
