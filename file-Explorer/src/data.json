@@ -1,33 +1,47 @@
 [
   {
+    "id": 1,
     "name": "public",
-    "isFolder": true
+    "isFolder": true,
+    "children": [
+      {
+        "id": 101,
+        "name": "img.jpg",
+        "isFolder": false
+      }
+    ]
   },
   {
+    "id": 2,
     "name": "src",
     "isFolder": true,
     "children": [
       {
+        "id": 3,
         "name": "components",
         "isFolder": true,
         "children": [
           {
+            "id": 4,
             "name": "Nested.jsx",
             "isFolder": false
           }
         ]
       },
       {
+        "id": 5,
         "name": "App.jsx",
         "isFolder": false
       }
     ]
   },
   {
+    "id": 6,
     "name": "package.json",
     "isFolder": false
   },
   {
+    "id": 7,
     "name": "package.lock.json",
     "isFolder": false
   }
