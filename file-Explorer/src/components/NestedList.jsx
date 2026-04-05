@@ -32,7 +32,10 @@ const NestedList = ({ list }) => {
                 {node.name}
               </span>
               {node.isFolder && (
-                <button className="ml-auto opacity-0 group-hover:opacity-100 text-gray-400 hover:text-green-400 transition">
+                <button
+                  className="ml-auto opacity-0 group-hover:opacity-100 text-gray-400 hover:text-green-400 transition"
+                  onClick={() => addFolder(node.id)}
+                >
                   <FolderPlus />
                 </button>
               )}
