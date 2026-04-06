@@ -6,7 +6,7 @@ const SearchBar = () => {
       <div className="flex items-center gap-3">
         <label className="text-sm font-semibold text-gray-600">Find me</label>
         <input
-          className="px-4 py-2 w-74 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-[#606e03] focus:border-transparent transition"
+          className="px-4 py-2 w-74 border border-[#3e460a56] rounded-lg outline-none focus:ring-2 focus:ring-[#606e03] focus:border-transparent transition "
           type="text"
           placeholder="What would you like to eat today"
         />
