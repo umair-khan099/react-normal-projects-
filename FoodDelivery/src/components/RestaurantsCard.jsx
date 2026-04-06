@@ -1,38 +1,7 @@
 import React from "react";
 import { ChevronRight } from "lucide-react";
 
-const RestaurantsCard = () => {
-  const data = [
-    {
-      img: "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?q=80&w=1170&auto=format&fit=crop",
-      logo: "https://rp-media.faasos.io/catalog/images/0TB1SAAY2Z.jpeg?d=375&tr=w-40,h-40",
-      name: "Sirvi Food",
-      desc: "Pizza With Standout Toppings",
-      offer: "50% OFF upto ₹150",
-    },
-    {
-      img: "https://media.istockphoto.com/id/1352474720/photo/fresh-paneer-roll-with-fresh-tomatos-salad-cheese-and-onions-isolated-on-bright-blue.webp?b=1&s=612x612&w=0&k=20&c=g2ve9CfrfD6fOuYd5tiecf2T6j3PgejySJVMBJ323Q4=",
-      logo: "https://rp-media.faasos.io/catalog/images/0TB1SAAY2Z.jpeg?d=375&tr=w-40,h-40",
-      name: "Rolls Hub",
-      desc: "Delicious Kathi Rolls",
-      offer: "40% OFF",
-    },
-    {
-      img: "https://cdn.pixabay.com/photo/2022/02/12/15/02/biryani-7009118_1280.jpg",
-      logo: "https://rp-media.faasos.io/catalog/images/0TB1SAAY2Z.jpeg?d=375&tr=w-40,h-40",
-      name: "Biryani House",
-      desc: "Authentic Veg Biryani",
-      offer: "30% OFF",
-    },
-    {
-      img: "https://cdn.pixabay.com/photo/2022/02/12/15/02/biryani-7009118_1280.jpg",
-      logo: "https://rp-media.faasos.io/catalog/images/0TB1SAAY2Z.jpeg?d=375&tr=w-40,h-40",
-      name: "Biryani House",
-      desc: "Authentic Veg Biryani",
-      offer: "30% OFF",
-    },
-  ];
-  console.log(data);
+const RestaurantsCard = ({ data }) => {
   return (
     <div className="py-6 px-6">
       {/* Header */}

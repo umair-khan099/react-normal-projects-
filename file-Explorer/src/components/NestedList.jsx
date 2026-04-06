@@ -3,7 +3,7 @@ import { ChevronRight } from "lucide-react";
 import { ChevronDown } from "lucide-react";
 import { FolderPlus } from "lucide-react";
 
-const NestedList = ({ list }) => {
+const NestedList = ({ list, addNodeList }) => {
   const [isExpend, setIsExpend] = useState({});
   return (
     <div>
@@ -34,7 +34,7 @@ const NestedList = ({ list }) => {
               {node.isFolder && (
                 <button
                   className="ml-auto opacity-0 group-hover:opacity-100 text-gray-400 hover:text-green-400 transition"
-                  onClick={() => addFolder(node.id)}
+                  onClick={() => addNodeList(node.id)}
                 >
                   <FolderPlus />
                 </button>

@@ -1,8 +1,9 @@
 import React from "react";
+import categorys from "../../utils/catogary";
 
-const SearchBar = () => {
+const SearchBar = ({ filterData }) => {
   return (
-    <div className="flex items-center justify-between px-8 py-4 bg-[#d6d6d4] shadow-md rounded-xl">
+    <div className="flex items-center justify-between px-8 py-4 bg-[#ffffff] shadow-md rounded-xl">
       <div className="flex items-center gap-3">
         <label className="text-sm font-semibold text-gray-600">Find me</label>
         <input
@@ -13,12 +14,13 @@ const SearchBar = () => {
       </div>
 
       <ul className="flex items-center gap-3">
-        {["Veg", "Non Veg", "Fast Food", "Drink", "Sweets"].map((catogary) => (
+        {categorys.map((category) => (
           <li
-            key={catogary}
+            onClick={() => filterData(category)}
+            key={category}
             className="px-4 py-2 text-sm text-[#606e03] font-medium bg-[#d6d6d4] rounded-full cursor-pointer hover:bg-[#606e03] hover:text-white transition"
           >
-            {catogary}
+            {category}
           </li>
         ))}
       </ul>
