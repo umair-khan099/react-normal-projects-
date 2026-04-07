@@ -1,8 +1,13 @@
 import React from "react";
 import { ChevronRight } from "lucide-react";
+import RestaurantsShimmer from "./common/ShimmerUi";
 
 const RestaurantsCard = ({ data }) => {
-  return (
+  // console.log(data);
+
+  return !data || data.length === 0 ? (
+    <RestaurantsShimmer />
+  ) : (
     <div className="py-6 px-6">
       {/* Header */}
       <div className="flex items-center justify-between">
@@ -18,15 +23,15 @@ const RestaurantsCard = ({ data }) => {
 
       {/* Cards */}
       <div className="flex gap-6 py-6 overflow-x-auto">
-        {data.map((item, i) => (
+        {data.map((item) => (
           <div
-            key={i}
-            className="relative min-w-[300px] rounded-xl overflow-hidden shadow-lg"
+            key={item.brand_id}
+            className="relative min-w-[300px] rounded-xl overflow-hidden shadow-lg cursor-pointer"
           >
             {/* Image */}
             <img
-              src={item.img}
-              alt=""
+              src={item.banner_image_es}
+              alt="banner image"
               className="w-full h-[200px] object-cover"
             />
 
@@ -48,9 +53,11 @@ const RestaurantsCard = ({ data }) => {
 
                   <div className="flex flex-col">
                     <span className="text-white font-semibold text-sm">
-                      {item.name}
+                      {item.brand_name}
                     </span>
-                    <span className="text-white/80 text-xs">{item.desc}</span>
+                    <span className="text-white/80 text-xs">
+                      {item.description}
+                    </span>
                   </div>
                 </div>
 

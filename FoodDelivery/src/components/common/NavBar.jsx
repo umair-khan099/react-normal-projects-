@@ -12,9 +12,7 @@ const NavBar = () => {
           <button className="px-5 py-1 boredr-[#606e03] border rounded">
             Login
           </button>
-          <button className="px-5 py-1 boredr-[#606e03] border rounded">
-            Signin
-          </button>
+         
         </div>
       </ul>
     </div>
