@@ -1,14 +1,10 @@
 import React from "react";
-import Header from "./components/common/Header";
-import { createBrowserRouter } from "react-router-dom";
-
-import Body from "./components/pages/Body";
+import Layout from "./layout/Layout";
 
 const App = () => {
   return (
     <div className="bg-[#fffffc] w-full min-h-screen px-10 py-5">
-      <Header />
-      <Body />
+      <Layout />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import { ChevronRight } from "lucide-react";
-import RestaurantsShimmer from "./common/ShimmerUi";
+import RestaurantsShimmer from "../components/common/ShimmerUi";
 
 const RestaurantsCard = ({ data }) => {
   // console.log(data);
