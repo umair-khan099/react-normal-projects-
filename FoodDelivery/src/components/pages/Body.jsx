@@ -5,7 +5,7 @@ import RestaurantsCard from "../RestaurantsCard";
 // import restorentData from "../../utils/RestoratnData";
 const Body = () => {
   const [data, setdata] = useState([]);
-  // const [filteredData, setFilteredData] = useState([...data]);
+  const [filteredData, setFilteredData] = useState([]);
 
   const [search, setsearch] = useState("");
   console.log(search);
@@ -14,6 +14,7 @@ const Body = () => {
     const json = await res.json();
 
     setdata(json?.data?.data);
+    setFilteredData(json?.data?.data);
   };
 
   useEffect(() => {
@@ -25,7 +26,8 @@ const Body = () => {
     let filtered = data.filter((items) =>
       items.brand_name.toLowerCase().includes(search),
     );
-    setdata(filtered);
+    // setdata(filtered);
+    setFilteredData(filtered);
   };
 
   return (
@@ -36,7 +38,7 @@ const Body = () => {
         filterData={filterData}
       />
       <OffersBanner />
-      <RestaurantsCard data={data} />
+      <RestaurantsCard data={filteredData} />
     </div>
   );
 };
