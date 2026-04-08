@@ -3,8 +3,7 @@ import { ChevronRight } from "lucide-react";
 import RestaurantsShimmer from "../components/common/ShimmerUi";
 import { Link } from "react-router-dom";
 const RestaurantsCard = ({ data }) => {
-  // console.log(data);
-
+  
   return !data || data.length === 0 ? (
     <RestaurantsShimmer />
   ) : (
