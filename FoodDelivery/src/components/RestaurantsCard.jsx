@@ -1,7 +1,7 @@
 import React from "react";
 import { ChevronRight } from "lucide-react";
 import RestaurantsShimmer from "../components/common/ShimmerUi";
-
+import { Link } from "react-router-dom";
 const RestaurantsCard = ({ data }) => {
   // console.log(data);
 
@@ -24,7 +24,8 @@ const RestaurantsCard = ({ data }) => {
       {/* Cards */}
       <div className="flex gap-6 py-6 overflow-x-auto">
         {data.map((item) => (
-          <div
+          <Link
+            to={`/singlerestaurant/${item.brand_id}`}
             key={item.brand_id}
             className="relative min-w-[300px] rounded-xl overflow-hidden shadow-lg cursor-pointer"
           >
@@ -68,7 +69,7 @@ const RestaurantsCard = ({ data }) => {
               {/* Offer */}
               <p className="text-white text-xs mt-2">{item.offer}</p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

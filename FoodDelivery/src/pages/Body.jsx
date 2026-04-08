@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SearchBar from "../components/common/SearchBar";
-import OffersBanner from "../OffersBanner";
-import RestaurantsCard from "./RestaurantsCard";
+import OffersBanner from "../components/OffersBanner";
+import RestaurantsCard from "../components/RestaurantsCard";
 // import restorentData from "../../utils/RestoratnData";
 const Body = () => {
   const [data, setdata] = useState([]);

@@ -2,7 +2,7 @@ import React from "react";
 
 const OffersBanner = () => {
   return (
-    <div className="flex items-center gap-5 overflow-x-auto   py-5 ">
+    <div className="flex items-center gap-5 overflow-x-auto no-scrollbar   py-5 ">
       <img
         className="w-94 rounded-lg "
         src="https://product-assets.faasos.io/eatsure_cms/production/902060e7-9f7a-49f8-82fd-22914cda89f6.jpg?d=375&tr=w-464,h-232"

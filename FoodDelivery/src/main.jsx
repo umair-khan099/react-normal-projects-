@@ -1,12 +1,13 @@
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./index.css";
-import App from "./App.jsx";
+import "./app/index.css";
+import App from "./app/App.jsx";
 import About from "./pages/About.jsx";
 import Contact from "./pages/Cantact.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 import Layout from "./layout/Layout.jsx";
 import Body from "./pages/Body.jsx";
+import SingleRestaurant from "./pages/SingleRestaurants.jsx";
 
 const appRoute = createBrowserRouter([
   {
@@ -18,12 +19,16 @@ const appRoute = createBrowserRouter([
         element: <Body />,
       },
       {
-        path: "about",
+        path: "/about",
         element: <About />,
       },
       {
-        path: "contact",
+        path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/singlerestaurant/:resId",
+        element: <SingleRestaurant />,
       },
     ],
     errorElement: <NotFoundPage />,
