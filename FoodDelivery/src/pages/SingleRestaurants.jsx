@@ -1,79 +1,22 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { Star, Plus } from "lucide-react";
+import useSingleResturants from "../utils/useSingleResturants";
+import useScrollSpy from "../utils/useScrollSpy";
 
 const SingleRestaurant = () => {
-  const [collections, setCollections] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [activeSection, setActiveSection] = useState(null);
-
-  const sectionRefs = useRef({});
-
   const { resId } = useParams();
 
-  useEffect(() => {
-    fetchData();
-  }, [resId]);
+  const { collections, loading } = useSingleResturants(resId);
 
-  const fetchData = async () => {
-    try {
-      const res = await fetch(
-        `https://www.eatsure.com/v1/api/get_all_products/brand_id/${resId}/store_id/10211/source_id/10`
-      );
-      const json = await res.json();
-      setCollections(json?.data?.collections || []);
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // 🔥 scroll to section
-  const scrollToSection = (id) => {
-    const element = sectionRefs.current[id];
-    if (!element) return;
-
-    setActiveSection(id);
-
-    element.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
-
-  // 🔥 detect active section on scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      let current = null;
-
-      collections.forEach((collection) => {
-        const element = sectionRefs.current[collection.collection_id];
-        if (!element) return;
-
-        const rect = element.getBoundingClientRect();
-
-        if (rect.top <= 120) {
-          current = collection.collection_id;
-        }
-      });
-
-      if (current) {
-        setActiveSection(current);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [collections]);
+  const { sectionRefs, activeSection, scrollToSection } =
+    useScrollSpy(collections);
 
   if (loading) return <h1 className="text-[#606e03] p-6">Loading...</h1>;
 
   return (
     <div className="bg-white min-h-screen px-6 py-6">
       <div className="flex gap-8">
-        
         {/* 📍 SIDEBAR */}
         <div className="w-[240px] border-r pr-4 sticky top-4 h-fit">
           {collections.map((c) => (
@@ -97,9 +40,7 @@ const SingleRestaurant = () => {
           {collections.map((collection) => (
             <div
               key={collection.collection_id}
-              ref={(el) =>
-                (sectionRefs.current[collection.collection_id] = el)
-              }
+              ref={(el) => (sectionRefs.current[collection.collection_id] = el)}
             >
               {/* Title */}
               <h2 className="text-xl font-semibold text-[#606e03] mb-4">
@@ -154,7 +95,6 @@ const SingleRestaurant = () => {
             </div>
           ))}
         </div>
-
       </div>
     </div>
   );
