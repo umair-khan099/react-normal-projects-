@@ -1,13 +1,17 @@
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./app/index.css";
-import App from "./app/App.jsx";
 import About from "./pages/About.jsx";
 import Contact from "./pages/Cantact.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 import Layout from "./layout/Layout.jsx";
 import Body from "./pages/Body.jsx";
 import SingleRestaurant from "./pages/SingleRestaurants.jsx";
+import Cart from "./pages/Cart.jsx";
+import { lazy, Suspense } from "react";
+import RestaurantsShimmer from "./components/common/ShimmerUi.jsx";
+
+const Grocery = lazy(() => import("./pages/Grocery.jsx"));
 
 const appRoute = createBrowserRouter([
   {
@@ -25,6 +29,18 @@ const appRoute = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<RestaurantsShimmer />}>
+            <Grocery />
+          </Suspense>
+        ),
+      },
+      {
+        path: "cart",
+        element: <Cart />,
       },
       {
         path: "/singlerestaurant/:resId",

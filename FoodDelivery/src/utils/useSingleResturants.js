@@ -11,7 +11,7 @@ const useSingleResturants = (resId) => {
   const fetchData = async () => {
     try {
       const res = await fetch(
-        `https://www.eatsure.com/v1/api/get_all_products/brand_id/${resId}/store_id/10211/source_id/11`,
+        `https://www.eatsure.com/v1/api/get_all_products/brand_id/${resId}/store_id/10173/source_id/10`,
       );
       const json = await res.json();
       setCollections(json?.data?.collections || []);

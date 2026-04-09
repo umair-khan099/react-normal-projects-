@@ -4,15 +4,11 @@ import RestaurantsCard from "../components/RestaurantsCard";
 import useRestaurants from "../utils/useRestautants";
 
 const Body = () => {
-  const { search, filteredData, data, setsearch, filterData } =
-    useRestaurants();
+  const { search, setSearch, filteredData } = useRestaurants();
+
   return (
     <div>
-      <SearchBar
-        search={search}
-        setsearch={setsearch}
-        filterData={filterData}
-      />
+      <SearchBar search={search} setsearch={setSearch} />
       <OffersBanner />
       <RestaurantsCard data={filteredData} />
     </div>
