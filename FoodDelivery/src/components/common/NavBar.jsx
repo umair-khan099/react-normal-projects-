@@ -8,7 +8,8 @@ const NavBar = () => {
         <Link to={"/"}>Home</Link>
         <Link to={"/about"}>About</Link>
         <Link to={"/contact"}>Contact</Link>
-        <Link>Cart</Link>
+        <Link to={"/grocery"}>Grocery</Link>
+        <Link to={"/cart "}>Cart</Link>
         <div className="ml-4 flex items-center gap-2">
           <button className="px-5 py-1 boredr-[#606e03] border rounded">
             Login
