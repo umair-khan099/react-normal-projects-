@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { Star, Plus } from "lucide-react";
 import useSingleResturants from "../utils/useSingleResturants";
 import useScrollSpy from "../utils/useScrollSpy";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
 const SingleRestaurant = () => {
   const { resId } = useParams();
@@ -11,6 +13,12 @@ const SingleRestaurant = () => {
 
   const { sectionRefs, activeSection, scrollToSection } =
     useScrollSpy(collections);
+
+  const dispatch = useDispatch();
+  
+  const handleAddItem = (product) => {
+    dispatch(addItem(product));
+  };
 
   if (loading) return <h1 className="text-[#606e03] p-6">Loading...</h1>;
 
@@ -83,7 +91,10 @@ const SingleRestaurant = () => {
                           ₹{product.price}
                         </span>
 
-                        <button className="flex items-center gap-1 border border-[#606e03] text-[#606e03] px-2 py-1 rounded-md text-sm hover:bg-[#606e03] hover:text-white transition">
+                        <button
+                          onClick={() => handleAddItem(product)}
+                          className="flex items-center gap-1 border border-[#606e03] text-[#606e03] px-2 py-1 rounded-md text-sm hover:bg-[#606e03] hover:text-white transition"
+                        >
                           <Plus size={14} />
                           Add
                         </button>

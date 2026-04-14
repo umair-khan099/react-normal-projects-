@@ -3,7 +3,6 @@ import { ChevronRight } from "lucide-react";
 import RestaurantsShimmer from "../components/common/ShimmerUi";
 import { Link } from "react-router-dom";
 const RestaurantsCard = ({ data }) => {
-  
   return !data || data.length === 0 ? (
     <RestaurantsShimmer />
   ) : (
@@ -31,7 +30,6 @@ const RestaurantsCard = ({ data }) => {
             {/* Image */}
             <img
               src={item.banner_image_es}
-              alt="banner image"
               className="w-full h-[200px] object-cover"
             />
 
@@ -47,7 +45,7 @@ const RestaurantsCard = ({ data }) => {
                     <img
                       src={item.logo}
                       className="w-8 h-8 rounded-full object-cover"
-                      alt=""
+                     
                     />
                   )}
 

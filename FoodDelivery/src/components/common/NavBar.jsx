@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
+  const CartItems = useSelector((store) => store.cart.items || []);
+  console.log(CartItems);
   return (
     <div>
       <ul className="flex items-center gap-4 text-xl text-[#606e03] cursor-pointer">
@@ -9,7 +12,7 @@ const NavBar = () => {
         <Link to={"/about"}>About</Link>
         <Link to={"/contact"}>Contact</Link>
         <Link to={"/grocery"}>Grocery</Link>
-        <Link to={"/cart "}>Cart</Link>
+        <Link to={"/cart"}>Cart ({CartItems.length} items)</Link>
         <div className="ml-4 flex items-center gap-2">
           <button className="px-5 py-1 boredr-[#606e03] border rounded">
             Login

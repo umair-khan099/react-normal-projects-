@@ -10,6 +10,8 @@ import SingleRestaurant from "./pages/SingleRestaurants.jsx";
 import Cart from "./pages/Cart.jsx";
 import { lazy, Suspense } from "react";
 import RestaurantsShimmer from "./components/common/ShimmerUi.jsx";
+import { Provider } from "react-redux";
+import store from "./utils/appStore.js";
 
 const Grocery = lazy(() => import("./pages/Grocery.jsx"));
 
@@ -39,7 +41,7 @@ const appRoute = createBrowserRouter([
         ),
       },
       {
-        path: "cart",
+        path: "/cart",
         element: <Cart />,
       },
       {
@@ -51,5 +53,7 @@ const appRoute = createBrowserRouter([
   },
 ]);
 createRoot(document.getElementById("root")).render(
-  <RouterProvider router={appRoute} />,
+  <Provider store={store}>
+    <RouterProvider router={appRoute} />,
+  </Provider>,
 );
