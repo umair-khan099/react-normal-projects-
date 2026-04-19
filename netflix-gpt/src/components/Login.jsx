@@ -1,13 +1,70 @@
 import React, { useState } from "react";
 import Header from "./Header";
-
+import { useRef } from "react";
+import { checkValidate } from "../utils/validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/fireBase";
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
+
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const email = useRef(null);
+  const password = useRef(null);
+  const name = useRef(null);
 
   const handleToggle = () => {
     setIsSignIn(!isSignIn);
   };
 
+  const handleClick = (e) => {
+    e.preventDefault();
+    const message = checkValidate(email.current.value, password.current.value);
+    setErrorMsg(message);
+
+    if (message) return;
+
+    if (!isSignIn) {
+      // sign up
+
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value,
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          // ...
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMsg(errorCode + "-" + errorMessage);
+          // ..
+        });
+    } else {
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value,
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          // ...
+          console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+        });
+    }
+  };
   return (
     <div className="relative w-full h-screen">
       <Header />
@@ -31,24 +88,34 @@ const Login = () => {
 
           {!isSignIn && (
             <input
+              ref={name}
               type="text"
               placeholder="Full name"
               className="p-3 rounded bg-gray-800/70 focus:outline-none focus:ring-2 focus:ring-red-600"
             />
           )}
           <input
-            type="text"
+            ref={email}
+            type="email"
             placeholder="Email"
             className="p-3 rounded bg-gray-800/70 focus:outline-none focus:ring-2 focus:ring-red-600"
           />
 
           <input
+            ref={password}
             type="password"
             placeholder="Password"
             className="p-3 rounded bg-gray-800/70 focus:outline-none focus:ring-2 focus:ring-red-600"
           />
-
-          <button className="bg-red-600 hover:bg-red-700 transition duration-300 p-3 rounded font-semibold">
+          {errorMsg && (
+            <p className="text-red-500 text-sm bg-red-500/10 border border-red-500/30 px-3 py-2 rounded">
+              {errorMsg}
+            </p>
+          )}
+          <button
+            onClick={(e) => handleClick(e)}
+            className="bg-red-600 hover:bg-red-700 transition duration-300 p-3 rounded font-semibold"
+          >
             {isSignIn ? "Sign In" : "Sign Up"}
           </button>
 
