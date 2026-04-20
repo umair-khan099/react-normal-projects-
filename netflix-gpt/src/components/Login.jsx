@@ -19,11 +19,8 @@ const Login = () => {
   const name = useRef(null);
 
   const handleClick = async (e) => {
-
-    const message = checkValidate(
-      email.current.value,
-      password.current.value
-    );
+    e.preventDefault();
+    const message = checkValidate(email.current.value, password.current.value);
 
     if (message) {
       setErrorMsg(message);
@@ -41,25 +38,30 @@ const Login = () => {
         const userCredential = await createUserWithEmailAndPassword(
           auth,
           email.current.value,
-          password.current.value
+          password.current.value,
         );
 
         await updateProfile(userCredential.user, {
           displayName: name.current.value,
-          photoURL:
-            "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+          photoURL: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
         });
+        const user = userCredential.user;
 
-        navigate("/browser");
+        dispatch(
+          addUser({
+            uid: user.uid,
+            email: user.email,
+            displayName: name.current.value,
+            photoURL: user.photoURL,
+          }),
+        );
       } else {
         // SIGN IN
         await signInWithEmailAndPassword(
           auth,
           email.current.value,
-          password.current.value
+          password.current.value,
         );
-
-        navigate("/browser");
       }
     } catch (error) {
       setErrorMsg(error.code + " - " + error.message);
