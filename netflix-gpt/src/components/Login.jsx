@@ -19,7 +19,6 @@ const Login = () => {
   const name = useRef(null);
 
   const handleClick = async (e) => {
-    e.preventDefault();
 
     const message = checkValidate(
       email.current.value,
