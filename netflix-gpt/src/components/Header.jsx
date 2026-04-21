@@ -33,6 +33,7 @@ const Header = () => {
 
     return () => unsubscribe();
   }, []);
+  
   return (
     <div className="absolute top-0 w-full flex justify-between items-center px-8 py-4 bg-gradient-to-b from-black z-10">
       {/* Logo */}
