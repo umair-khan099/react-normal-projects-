@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { API_OPTIONS } from "../utils/constant";]  
+import { API_OPTIONS } from "../utils/constant";
 
 function VideoBackground() {
   const [trailerkey, setTrailerkey] = useState(null);
