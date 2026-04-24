@@ -14,9 +14,9 @@ function VideoBackground({movieId}) {
         className="w-full h-full scale-150 pointer-events-none"
         src={
           "https://www.youtube.com/embed/" +
-          trailer.key 
-          // "?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=" +
-          // trailer.key
+          trailer.key +
+          "?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=" +
+          trailer.key
           
         }
         title="YouTube video player"
